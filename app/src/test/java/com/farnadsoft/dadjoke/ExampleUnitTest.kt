@@ -1,4 +1,4 @@
-package com.farnadsoft.dad_joke
+package com.farnadsoft.dadjoke
 
 import org.junit.Test
 

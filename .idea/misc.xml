@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dev/Dad_Joke/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/activity_jokes.xml" value="0.25271739130434784" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/adapter_joke.xml" value="0.25271739130434784" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/fragment_favorite_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/fragment_favorites.xml" value="0.25416666666666665" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/fragment_first.xml" value="0.25271739130434784" />
+        <entry key="..\:/Dev/test/DadJoke0/app/src/main/res/layout/fragment_second.xml" value="0.25271739130434784" />
       </map>
     </option>
   </component>

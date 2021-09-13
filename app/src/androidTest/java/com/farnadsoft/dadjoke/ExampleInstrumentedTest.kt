@@ -1,4 +1,4 @@
-package com.farnadsoft.dad_joke
+package com.farnadsoft.dadjoke
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.farnadsoft.dad_joke", appContext.packageName)
+        assertEquals("com.farnadsoft.dadjoke0", appContext.packageName)
     }
 }
