@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Dad_Joke</string>
+    <string name="app_name">Dad Joke</string>
+    <string name="add">Add</string>
+    <string name="favorite">Favorite</string>
+    <string name="new_joke">New Joke</string>
+    <string name="push_the_button_to_bring_a_joke">Push the button to bring a joke</string>
 </resources>
