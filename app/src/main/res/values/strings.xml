@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dad Joke 0</string>
+    <string name="app_name">Dad Joke</string>
     <string name="add">Add</string>
     <string name="favorite">Favorite</string>
     <string name="new_joke">New Joke</string>
