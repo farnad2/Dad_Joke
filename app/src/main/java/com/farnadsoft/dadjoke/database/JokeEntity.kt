@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tbl_jokes")
 data class JokeEntity (
-    @PrimaryKey val id: String,
+    @PrimaryKey var id: String,
     //val id: String,
-    val joke: String?,
-    val status: Int?
+    var joke: String?,
+    var status: Int?
         )
 

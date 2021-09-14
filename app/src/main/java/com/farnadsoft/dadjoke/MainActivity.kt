@@ -21,7 +21,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    var currentJoke:JokeData?=null
+    private var currentJoke=JokeEntity("0","joke",0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,12 @@ class MainActivity : AppCompatActivity() {
         )
             .get(MainViewModel::class.java)
 
-        val jokeObserver= Observer<JokeData>{ joke->tv_joke.text=joke.joke}
+        val jokeObserver= Observer<JokeData>{ joke->
+            currentJoke.id=joke.id
+            currentJoke.joke=joke.joke
+            currentJoke.status=joke.status
+            tv_joke.text=joke.joke
+        }
         val error=Observer<String>{error->Toast.makeText(applicationContext, error, Toast.LENGTH_SHORT).show()}
 
         val db = Room.databaseBuilder(
@@ -66,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_add.setOnClickListener {
-            //storeJoke()
+           storeJoke(currentJoke)
         }
 
         btn_favorite.setOnClickListener {
