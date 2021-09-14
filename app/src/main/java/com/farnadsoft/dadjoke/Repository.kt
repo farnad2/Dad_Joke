@@ -8,11 +8,15 @@ import io.reactivex.Single
 
 class Repository(private val apiService:RetrofitApiService, private val jokeDao: JokeDao) {
 
-//    fun getAJoke():Single<JokeData>{
-//        //return apiService.getAJoke().doOnSuccess(joke->jokeDao.insert(joke)).ignoreElement()
-//        return apiService.getAJoke()
-//
-//    }
-//
-//    fun getJokes(): LiveData<List<JokeEntity>> {return jokeDao.getJokes()}
+    fun getAJoke():Single<JokeData>{
+        //return apiService.getAJoke().doOnSuccess(joke->jokeDao.insert(joke)).ignoreElement()
+        return apiService.getAJoke()
+
+    }
+
+    fun getJokes(): LiveData<List<JokeEntity>> {return jokeDao.getJokes()}
+
+    fun putAJokeToDB(){
+
+    }
 }

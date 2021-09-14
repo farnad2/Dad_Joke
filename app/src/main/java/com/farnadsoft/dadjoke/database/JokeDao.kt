@@ -6,8 +6,8 @@ import androidx.room.*
 @Dao
 interface JokeDao {
     @Query("SELECT * FROM tbl_jokes")
-    fun getJokes(): List<JokeEntity>
-    //fun getJokes(): LiveData<List<JokeEntity>>
+    //fun getJokes(): List<JokeEntity>
+    fun getJokes(): LiveData<List<JokeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(joke: JokeEntity)

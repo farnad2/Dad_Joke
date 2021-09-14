@@ -1,5 +1,6 @@
 package com.farnadsoft.dadjoke
 
+import androidx.lifecycle.LiveData
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -11,23 +12,23 @@ interface RetrofitApiService {
 
     @Headers("Accept: application/json","User-Agent: Farnad Try II")
     @GET("/")
-    fun getAJoke() : Call<JokeData>
-    //fun getAJoke() : Single<JokeData>
+    //fun getAJoke() : Call<JokeData>
+    fun getAJoke() : Single<JokeData>
 
-    companion object {
-
-        var BASE_URL = "https://icanhazdadjoke.com"
-
-        fun create() : RetrofitApiService {
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-            return retrofit.create(RetrofitApiService::class.java)
-
-        }
-    }
+//    companion object {
+//
+//        var BASE_URL = "https://icanhazdadjoke.com"
+//
+//        fun create() : RetrofitApiService {
+//
+//            val retrofit = Retrofit.Builder()
+//                .baseUrl(BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//            return retrofit.create(RetrofitApiService::class.java)
+//
+//        }
+//    }
 
 
 }
