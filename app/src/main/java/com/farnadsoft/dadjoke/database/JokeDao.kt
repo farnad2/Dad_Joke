@@ -1,12 +1,13 @@
 package com.farnadsoft.dadjoke.database
 
+import android.telecom.Call
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface JokeDao {
     @Query("SELECT * FROM tbl_jokes")
-    //fun getJokes(): List<JokeEntity>
     fun getJokes(): LiveData<List<JokeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

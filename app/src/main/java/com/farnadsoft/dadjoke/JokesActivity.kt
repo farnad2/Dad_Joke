@@ -1,33 +1,44 @@
 package com.farnadsoft.dadjoke
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.farnadsoft.dadjoke.databinding.ActivityJokesBinding
+import com.farnadsoft.dadjoke.database.JokeDatabase
+import com.hoverdroids.noteswitharchitecturecomponents.ui.JokeAdapter
+import com.farnadsoft.dadjoke.ui.NoteItemTouchHandler
 import kotlinx.android.synthetic.main.activity_jokes.*
-import java.util.ArrayList
 
 class JokesActivity : AppCompatActivity() {
+
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jokes)
 
+         mainViewModel = ViewModelProvider(
+            this, MainViewModelFactory(
+                Repository(
+                    ApiServiceProvider.getApiService(),
+                    JokeDatabase.getInstance(applicationContext)!!.jokeDao()
+                )
+            )
+        )
+            .get(MainViewModel::class.java)
+
         jokes_list.layoutManager = LinearLayoutManager(this)
 
-        val jokes=ArrayList<JokeData>()
-        jokes.add(JokeData("1","sample joke one",100))
-        jokes.add(JokeData("2","sample joke two",200))
-        jokes.add(JokeData("3","sample joke three",300))
-
-
-        val adapter=JokeRecyclerAdapter(jokes)
+        val adapter = JokeAdapter()
         jokes_list.adapter=adapter
+
+        mainViewModel.getJokesFromDB().observe(this, Observer{ jokes ->
+            jokes?.let { adapter.submitList(jokes) }
+        })
+
+        ItemTouchHelper(NoteItemTouchHandler(mainViewModel, adapter)).attachToRecyclerView(jokes_list)
 
 
     }

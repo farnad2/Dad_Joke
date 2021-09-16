@@ -10,9 +10,8 @@ import retrofit2.http.Headers
 
 interface RetrofitApiService {
 
-    @Headers("Accept: application/json","User-Agent: Farnad Try II")
+    @Headers("Accept: application/json","User-Agent: FarnadSoft")
     @GET("/")
-    //fun getAJoke() : Call<JokeData>
     fun getAJoke() : Single<JokeData>
 
 //    companion object {
@@ -29,7 +28,6 @@ interface RetrofitApiService {
 //
 //        }
 //    }
-
 
 }
 

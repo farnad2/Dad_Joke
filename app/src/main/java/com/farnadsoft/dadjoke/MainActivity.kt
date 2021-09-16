@@ -3,21 +3,11 @@ package com.farnadsoft.dadjoke
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
 import com.farnadsoft.dadjoke.database.JokeDatabase
 import com.farnadsoft.dadjoke.database.JokeEntity
-import io.reactivex.SingleObserver
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,40 +28,25 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
 
         val jokeObserver= Observer<JokeData>{ joke->
-            currentJoke.id=joke.id
-            currentJoke.joke=joke.joke
-            currentJoke.status=joke.status
+            currentJoke=JokeEntity(joke.id,joke.joke,joke.status)
             tv_joke.text=joke.joke
         }
-        val error=Observer<String>{error->Toast.makeText(applicationContext, error, Toast.LENGTH_SHORT).show()}
-
-        val db = Room.databaseBuilder(
-            applicationContext,
-            JokeDatabase::class.java, "joke_database.db"
-        )
-            .allowMainThreadQueries()
-            .build()
-
-        val jokeDao = db.jokeDao()
+        val errorObserver=Observer<String>{error->tv_joke.text=error}
 
 
         fun bringAJoke() {
             mainViewModel.getAJoke().observe(this,jokeObserver)
-            mainViewModel.getError().observe(this,error)
+            mainViewModel.getError().observe(this,errorObserver)
         }
 
         bringAJoke()
-
-        fun storeJoke(joke:JokeEntity){
-            jokeDao.insert(joke)
-        }
 
         btn_joke.setOnClickListener {
             bringAJoke()
         }
 
         btn_add.setOnClickListener {
-           storeJoke(currentJoke)
+           mainViewModel.putAJokeToDB(currentJoke)
         }
 
         btn_favorite.setOnClickListener {

@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "tbl_jokes")
 data class JokeEntity (
     @PrimaryKey var id: String,
-    //val id: String,
     var joke: String?,
     var status: Int?
         )

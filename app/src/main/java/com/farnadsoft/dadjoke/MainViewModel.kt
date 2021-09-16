@@ -1,19 +1,15 @@
 package com.farnadsoft.dadjoke
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.farnadsoft.dadjoke.database.JokeDao
-import com.farnadsoft.dadjoke.database.JokeDatabase
 import com.farnadsoft.dadjoke.database.JokeEntity
-import io.reactivex.CompletableObserver
-import io.reactivex.Single
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.Flow
 
 class MainViewModel(private val repository: Repository): ViewModel() {
 
@@ -40,7 +36,6 @@ class MainViewModel(private val repository: Repository): ViewModel() {
 
             })
         return joke
-        //return repository.getAJoke()
     }
 
     fun getError(): LiveData<String> {
@@ -51,8 +46,12 @@ class MainViewModel(private val repository: Repository): ViewModel() {
         return repository.getJokes()
     }
 
-    fun putAJokeToDB(){
+    fun putAJokeToDB(joke: JokeEntity) {
+        repository.putAJokeToDB(joke)
+    }
 
+    fun delete(joke:JokeEntity){
+        repository.delete(joke)
     }
 
     override fun onCleared() {
