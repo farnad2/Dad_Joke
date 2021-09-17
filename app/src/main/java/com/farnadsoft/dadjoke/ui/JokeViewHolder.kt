@@ -9,9 +9,9 @@ import com.hoverdroids.noteswitharchitecturecomponents.ui.JokeAdapter
 
 class JokeViewHolder(var jokeAdapter: JokeAdapter, view: View, var onItemClickListener: OnItemClickListener? = null): RecyclerView.ViewHolder(view) {
 
-    var txt_id: TextView = view.findViewById(R.id.txt_id)
+    // var txt_id: TextView = view.findViewById(R.id.txt_id) //uncomment if you need to show it in recycler view
     var txt_joke: TextView = view.findViewById(R.id.txt_joke)
-    var txt_status: TextView = view.findViewById(R.id.txt_status)
+    // var txt_status: TextView = view.findViewById(R.id.txt_status) //uncomment if you need to show it in recycler view
 
     init {
         view.setOnClickListener(View.OnClickListener {

@@ -55,7 +55,7 @@ class MainViewModel(private val repository: Repository): ViewModel() {
     }
 
     override fun onCleared() {
-        disposable!!.dispose()
+        if (disposable !=null)  disposable!!.dispose()
         super.onCleared()
     }
 

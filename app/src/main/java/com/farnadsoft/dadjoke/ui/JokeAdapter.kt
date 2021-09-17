@@ -24,8 +24,8 @@ class JokeAdapter(): ListAdapter<JokeEntity, JokeViewHolder>(JokeDiffCallback())
 
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
         val joke = getItem(position)
-        holder.txt_id.text = joke.id
+        //holder.txt_id.text = joke.id //uncomment if you need to show it in recycler view
         holder.txt_joke.text = joke.joke
-        holder.txt_status.text = joke.status.toString()
+        //holder.txt_status.text = joke.status.toString() //uncomment if you need to show it in recycler view
     }
 }

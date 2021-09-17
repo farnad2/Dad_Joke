@@ -22,7 +22,7 @@ class JokesActivity : AppCompatActivity() {
          mainViewModel = ViewModelProvider(
             this, MainViewModelFactory(
                 Repository(
-                    ApiServiceProvider.getApiService(),
+                    ApiService.create(),
                     JokeDatabase.getInstance(applicationContext)!!.jokeDao()
                 )
             )

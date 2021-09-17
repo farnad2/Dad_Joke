@@ -14,4 +14,5 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="push_the_button_to_bring_a_joke">Push the button to bring a joke</string>
+    <string name="swipe_left_or_write_to_remove_a_joke">Swipe left or write to remove a joke</string>
 </resources>

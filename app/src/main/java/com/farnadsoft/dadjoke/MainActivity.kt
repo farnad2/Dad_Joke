@@ -3,6 +3,7 @@ package com.farnadsoft.dadjoke
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.farnadsoft.dadjoke.database.JokeDatabase
@@ -11,16 +12,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var currentJoke=JokeEntity("0","joke",0)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var currentJoke=JokeEntity("0","joke",0)
+
         val mainViewModel = ViewModelProvider(
             this, MainViewModelFactory(
                 Repository(
-                    ApiServiceProvider.getApiService(),
+                    ApiService.create(),
                     JokeDatabase.getInstance(applicationContext)!!.jokeDao()
                 )
             )
@@ -47,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_add.setOnClickListener {
            mainViewModel.putAJokeToDB(currentJoke)
+           Toast.makeText(this,"This joke stored",Toast.LENGTH_SHORT).show()
         }
 
         btn_favorite.setOnClickListener {
